@@ -1,5 +1,5 @@
 /* ============================================================
-   学术个人主页
+   个人简历
    顶部导航吸顶 + 左侧固定信息栏 + 右侧内容滚动
    纯 CSS，图标为内联 SVG，无任何外部请求
    ============================================================ */
@@ -206,114 +206,86 @@ em { font-style: normal; font-weight: 600; color: var(--text-soft); }
   border-bottom: 1px solid var(--border);
 }
 
+.h2-en {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: .04em;
+  color: var(--text-faint);
+  margin-left: 4px;
+}
+
+/* ---------- 英文对照（骨架层） ---------- */
+.en {
+  display: block;
+  font-size: 0.86em;
+  line-height: 1.55;
+  color: #6b7280;
+  font-weight: 400;
+}
+
+.nav-en {
+  font-size: 11.5px;
+  font-weight: 400;
+  color: #6b7280;
+  margin-left: 6px;
+}
+
+.social-icons .li-body { min-width: 0; }
+
 .section > p {
   margin: 0 0 14px;
   text-align: justify;
 }
 
-/* ---------- News ---------- */
-.news {
+/* ---------- 论文 / 专利列表 ---------- */
+.sub-h {
+  margin: 18px 0 10px;
+  font-size: 15px;
+  font-weight: 700;
+}
+.sub-h:first-of-type { margin-top: 0; }
+
+.pub-list {
   margin: 0;
   padding-left: 20px;
   display: grid;
-  gap: 7px;
-  color: var(--text-soft);
-}
-.news li::marker { color: #000000; }
-.news em {
-  color: var(--accent);
-  font-variant-numeric: tabular-nums;
-  margin-right: 2px;
-}
-
-/* ---------- 论文条目 ---------- */
-.pub {
-  padding: 0 0 26px;
-  margin-bottom: 26px;
-  border-bottom: 1px dashed var(--border);
-}
-.pub:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 4px; }
-
-.pub-venue {
-  margin: 0 0 9px;
-  font-size: 12.5px;
-  font-weight: 700;
-  color: #000000;
-  letter-spacing: .06em;
-}
-
-.pub-thumbs {
-  display: flex;
   gap: 10px;
-  margin-bottom: 13px;
-}
-
-/* 缩略图占位：换成 <img> 时把 .thumb 内容替换即可 */
-.thumb {
-  flex: 1 1 0;
-  aspect-ratio: 16 / 9;
-  border-radius: 6px;
-  display: grid;
-  place-items: center;
-  font-size: 12.5px;
-  letter-spacing: .06em;
-  color: #fff;
-  font-weight: 600;
-  text-shadow: 0 1px 5px rgba(0, 0, 0, .28);
-  border: 1px solid rgba(0, 0, 0, .06);
-}
-.thumb-a { background: linear-gradient(135deg, #60a5fa, #2563eb); }
-.thumb-b { background: linear-gradient(135deg, #34d399, #059669); }
-.thumb-c { background: linear-gradient(135deg, #a78bfa, #6d28d9); }
-.thumb-d { background: linear-gradient(135deg, #fbbf24, #d97706); }
-
-.pub-title {
-  margin: 0 0 5px;
-  font-size: 16.5px;
-  font-weight: 700;
-  line-height: 1.5;
-}
-
-.pub-meta {
-  margin: 0 0 6px;
-  font-size: 13.5px;
-  color: var(--text-faint);
-}
-.pub-meta strong { color: var(--text-soft); }
-
-.pub-authors {
-  margin: 0 0 8px;
-  font-size: 14px;
-  color: var(--text-soft);
-  line-height: 1.6;
-}
-
-.pub-desc {
-  margin: 0 0 12px;
   font-size: 14.5px;
   color: var(--text-soft);
-  text-align: justify;
 }
+.pub-list li::marker { color: #000000; font-weight: 600; }
 
-.pub-links { display: flex; gap: 8px; flex-wrap: wrap; }
-
-.pub-links a {
-  display: inline-block;
-  padding: 3px 13px;
-  font-size: 12.5px;
+.pub-list-title {
+  display: block;
   font-weight: 600;
-  color: #000000;
-  border: 1px solid #000000;
-  border-radius: 5px;
-  background: var(--bg);
-  text-decoration: none;
-  transition: all .15s ease;
+  color: var(--text);
+  line-height: 1.5;
 }
-.pub-links a:hover {
-  color: #ffffff;
-  background: #000000;
-  border-color: #000000;
-  text-decoration: none;
+.pub-list-meta {
+  display: block;
+  font-size: 13px;
+  color: var(--text-faint);
+}
+.pub-list-authors {
+  display: block;
+  font-size: 13.5px;
+  color: var(--text-soft);
+}
+
+.patent-list {
+  margin: 0;
+  padding-left: 20px;
+  display: grid;
+  gap: 8px;
+  font-size: 14.5px;
+  color: var(--text-soft);
+}
+.patent-list li::marker { color: #000000; }
+.patent-list strong { color: var(--text); margin-right: 3px; }
+.patent-meta {
+  display: block;
+  font-size: 13px;
+  color: var(--text-faint);
 }
 
 /* ---------- 项目 ---------- */
@@ -356,6 +328,7 @@ em { font-style: normal; font-weight: 600; color: var(--text-soft); }
   font-style: italic;
   padding-left: 22px;
 }
+.awards .en { padding-left: 22px; }
 
 /* ---------- 教育 ---------- */
 .edu {
@@ -367,21 +340,6 @@ em { font-style: normal; font-weight: 600; color: var(--text-soft); }
 }
 .edu li::marker { color: #000000; }
 .edu em { color: var(--accent); }
-
-/* ---------- 访客地图 ---------- */
-.map-placeholder {
-  border: 1px dashed #d0d7de;
-  border-radius: 8px;
-  background: var(--bg-soft);
-  padding: 34px 20px;
-  text-align: center;
-}
-.map-placeholder p { margin: 0; font-size: 14.5px; color: var(--text-soft); }
-.map-hint {
-  margin-top: 6px !important;
-  font-size: 12.5px !important;
-  color: var(--text-faint) !important;
-}
 
 /* ---------- 页脚 ---------- */
 .footer {
@@ -432,14 +390,13 @@ em { font-style: normal; font-weight: 600; color: var(--text-soft); }
   .content { padding: 26px 20px 48px; max-width: none; }
   .section { padding-top: 30px; }
   .section h2 { font-size: 19px; }
-  .pub-thumbs { flex-direction: column; }
   .award-org { padding-left: 0; display: block; }
+  .awards .en { padding-left: 0; }
 }
 
 @media (max-width: 520px) {
   .content { padding: 22px 16px 40px; }
   .sidebar { padding: 24px 16px 16px; }
-  .pub-links a { padding: 3px 10px; }
   .social-icons { max-width: none; }
 }
 
@@ -460,9 +417,9 @@ em { font-style: normal; font-weight: 600; color: var(--text-soft); }
     border-bottom: 1px solid #ccc;
   }
   .avatar { display: none; }
-  .map-placeholder { display: none; }
   .content { padding: 0; max-width: none; }
   body { font-size: 11.5pt; }
-  .section, .pub { page-break-inside: avoid; }
+  .section, .sub-h, .pub-list li, .patent-list li { page-break-inside: avoid; }
+  .en, .nav-en { color: #000; }
   a { color: #000; text-decoration: underline; }
 }
