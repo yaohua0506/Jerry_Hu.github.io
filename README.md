@@ -1,36 +1,61 @@
-# 个人简历
+<h1 align="center">
+个人简历
+</h1>
 
-纯静态的个人简历页面，零依赖（不需要 Node、Ruby，不加载任何 CDN）。
+<div align="center">
 
-## 文件说明
+[![](https://img.shields.io/github/stars/yaohua0506/yaohua0506.github.io?style=flat)](https://github.com/yaohua0506/yaohua0506.github.io/stargazers)
+[![](https://img.shields.io/github/forks/yaohua0506/yaohua0506.github.io?style=flat)](https://github.com/yaohua0506/yaohua0506.github.io/network/members)
+[![](https://img.shields.io/github/issues/yaohua0506/yaohua0506.github.io)](https://github.com/yaohua0506/yaohua0506.github.io/issues)
+[![](https://img.shields.io/github/last-commit/yaohua0506/yaohua0506.github.io)](https://github.com/yaohua0506/yaohua0506.github.io/commits/main)
+[![](https://img.shields.io/badge/dependencies-0-brightgreen)](https://github.com/yaohua0506/yaohua0506.github.io)
 
-本站源码直接放在仓库根目录，GitHub Pages 发布 `main` 分支的根目录，不需要 GitHub Actions。
+</div>
 
-```
-.
-├── index.html     页面结构 + 全部文字内容
-├── style.css      样式（含手机端适配、打印样式）
-├── Resume.pdf     简历占位文件，请替换成你自己的（文件名保持不变）
-├── .nojekyll      告诉 GitHub Pages 不要用 Jekyll 处理
-└── README.md      本文件
-```
+<p align="center">纯静态、零依赖的个人简历页面 · 专业编辑风 + 蓝色强调</p>
 
-## 本地预览
+<p align="center">
+    <br>
+    <img src="./screenshot.png" width="100%" alt="页面截图" />
+    <br>
+</p>
 
-直接双击 `index.html` 即可在浏览器打开。改完存盘刷新就行。
+在线预览：<https://yaohua0506.github.io/>
+
+站点只有 `index.html` + `style.css` 两个文件，不加载任何 CDN、字体或前端框架，断网双击也能正常打开。
+
+## 主要特点
+
+- **零依赖零请求**: 图标是内联 SVG，字体用系统字体栈，没有任何外部资源请求，首屏无需等待网络。
+- **专业编辑风**: 白底 + 单一蓝色强调色，四档文字层级、分区编号、卡片化经历，长页面也有清晰的视觉落点。
+- **滚动交互**: 顶部阅读进度条、导航自动高亮当前区块、内容滚动淡入，并遵循 `prefers-reduced-motion` 自动降级。
+- **响应式**: 针对 375 / 768 / 1024 / 1440 四档调校；窄屏侧栏回落为顶部区块，表格自动堆叠成卡片。
+- **打印友好**: `Ctrl + P` 可直接存成 PDF，打印样式自动隐藏导航与头像、去掉阴影与彩色底。
+- **可访问性**: 语义化标签、`aria-label` 标注星级、`focus-visible` 键盘焦点环、跳转正文的 skip link，正文对比度达到 WCAG AA。
+
+## 快速开始
+
+1. 克隆本仓库（或直接 fork 后改名成 `USERNAME/USERNAME.github.io`）：
+
+    ```powershell
+    git clone https://github.com/yaohua0506/yaohua0506.github.io.git
+    ```
+
+1. 打开 `index.html`，按「[内容维护](#内容维护)」一节的对照表替换文字内容。
+1. 用你自己的 PDF 覆盖 `Resume.pdf`，**文件名保持 `Resume.pdf`**（大小写敏感），导航栏的 `CV` 与 Hero 里的「下载 CV」都会指向它。
+1. 换成真实头像，参考「[换成真实头像](#换成真实头像)」。
+1. `commit` 并 `push` 到 `main`，GitHub Pages 约 1 分钟后自动重新构建。
 
 ## 页面结构
 
 **布局**：
 
-- **顶部导航**（吸顶）：`概览 · 经历 · 技能 · 成果 · 荣誉 · 教育 · CV`，滚动时高亮当前区块并显示顶部进度条
+- **顶部导航**（吸顶，60px）：`概览 · 经历 · 技能 · 成果 · 荣誉 · 教育 · CV`，滚动时高亮当前区块并显示顶部进度条
 - **左侧栏**（宽 300px，`position: sticky; top: 60px`）：头像、姓名、职位、三行方向标签、三个图标链接（学校 / 邮箱 / GitHub）
 - **右侧栏**：内容区，随页面滚动
 - 屏幕宽度小于 900px 时，侧栏回落成顶部区块，导航变成可横向滑动的一行
 
-**图标**：用 Font Awesome 的原始 SVG 路径内联写在 HTML 里，不请求任何 CDN，断网也能显示。
-
-**正文**（内容来自 `hyh-2026 Resume.md`）：
+**正文**：
 
 | 顺序 | 分区 | 锚点 | 格式说明 |
 |---|---|---|---|
@@ -41,20 +66,32 @@
 | 5 | 获奖与荣誉 Honors | `#honors` | `[A1]` 编号 + 奖项 + 日期 + 角色/颁奖方 |
 | 6 | 教育背景 Education | `#education` | 时间 + 学校 + 专业 + 学位 |
 
-> 注意：`CV` 在顶部导航的最后一项，指向 `Resume.pdf`。
 > 表格在 760px 以下自动堆叠成卡片（`th.t-key` 变成卡片标题，`td[data-label]` 显示字段名）。
 > 分区标题的 `01–06` 编号由 CSS 计数器自动生成，增删分区不用手改序号。
 
+## 目录结构
+
+```
+.
+├── index.html     页面结构 + 全部文字内容 + 底部内联脚本
+├── style.css      设计令牌 + 组件样式 + 响应式 + 打印样式
+├── screenshot.png README 配图
+├── Resume.pdf     简历占位文件，请替换成你自己的（文件名保持不变）
+├── .nojekyll      告诉 GitHub Pages 不要用 Jekyll 处理
+└── README.md      本文件
+```
+
 ## 视觉规范
 
-- 配色：白底 + 单一强调色 `--accent: #2563eb`，文字分 `--text / --text-2 / --text-3 / --text-4` 四档，全部定义在 `style.css` 顶部 `:root`
-- 字体：系统字体栈（零外部请求），数字与技术名词用 `--mono` 等宽栈
-- 动效：滚动淡入由页面底部内联脚本控制，`prefers-reduced-motion: reduce` 时自动关闭
-- 打印：`@media print` 会把强调色降为深灰、去掉卡片阴影，适合 `Ctrl + P` 存 PDF
+- **配色**：白底 + 单一强调色 `--accent: #2563eb`；文字分 `--text / --text-2 / --text-3 / --text-4` 四档，全部定义在 `style.css` 顶部的 `:root`
+- **字体**：系统字体栈（零外部请求）；数字与技术名词使用 `--mono` 等宽栈
+- **间距**：分区之间 `48px`，卡片内边距 `24–26px`，圆角 `10 / 14px`
+- **动效**：过渡统一 `180–200ms`；滚动淡入由页面底部内联脚本控制，`prefers-reduced-motion: reduce` 时全部关闭
+- **打印**：`@media print` 会把强调色降为深灰、去掉阴影与彩色底，并保证表格分页时不被拆断
 
-## 内容维护说明
+## 内容维护
 
-简历正文唯一来源是 `hyh-2026 Resume.md`，改内容时同步改 `index.html` 对应区块即可。常用位置：
+简历正文唯一来源是 `index.html`，改文字时直接改对应区块即可：
 
 | 要改的内容 | 在 index.html 里找 |
 |---|---|
@@ -75,23 +112,32 @@
 
 ## 换成真实头像
 
-**头像** —— 现在是一个带渐变环和虚线圆的装饰性占位（`.avatar` 只用 CSS 画），换成真实照片：
+现在的头像是一个带渐变环和虚线圆的装饰性占位（`.avatar` 完全由 CSS 绘制）。换成真实照片：
 
-```html
-<img src="images/avatar.jpg" alt="头像" class="avatar" />
-```
+1. 把照片放到 `images/avatar.jpg`。
+1. 把侧栏里的 `<div class="avatar" aria-hidden="true"></div>` 替换为：
 
-然后在 `style.css` 里补一句，让图片裁切填满（同时关掉装饰用的两道伪元素）：
+    ```html
+    <img src="images/avatar.jpg" alt="头像" class="avatar" />
+    ```
 
-```css
-img.avatar { object-fit: cover; object-position: top; border-radius: 50%; }
-img.avatar::before, img.avatar::after { display: none; }
-```
+1. 在 `style.css` 中补一句，让图片裁切填满（同时关掉装饰用的两道伪元素）：
+
+    ```css
+    img.avatar { object-fit: cover; object-position: top; border-radius: 50%; }
+    img.avatar::before, img.avatar::after { display: none; }
+    ```
 
 ## 替换简历
 
-`Resume.pdf` 现在是占位文件。用你自己的 PDF 覆盖它，**文件名保持 `Resume.pdf`**（大小写敏感），
-导航栏的 `CV` 按钮就会指向新文件。
+`Resume.pdf` 现在是 858 字节的占位文件。用你自己的 PDF 覆盖它，**文件名保持 `Resume.pdf`**（大小写敏感），
+顶部导航的 `CV` 和 Hero 里的「下载 CV」按钮就会指向新文件。
+
+## 本地调试
+
+1. 直接双击 `index.html`，改完存盘刷新即可，不需要构建步骤。
+1. 想模拟手机效果，浏览器开发者工具里切到 375px / 768px 宽度查看。
+1. 想检查打印效果，`Ctrl + P` 打开打印预览，A4 纸张下确认分页是否合适。
 
 ## 部署方式
 
@@ -107,8 +153,8 @@ git commit -m "更新内容"
 git push
 ```
 
-注意：所有内容改动都直接改仓库根目录里的文件。
+## 已知占位
 
-## 小技巧
-
-`Ctrl + P` 可直接打印成 PDF，打印样式已隐藏导航栏和头像，适合临时当简历用。
+- 侧栏姓名与 Hero 标题当前显示为 `hhh`，替换成真实姓名后记得同步 `<title>` 与 `<meta name="description">`
+- `Resume.pdf` 仍是占位文件
+- 头像是 CSS 绘制的装饰圆，等真实照片就位后按上一节替换
