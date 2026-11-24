@@ -4,17 +4,15 @@
 
 ## 文件说明
 
-本站源码位于仓库的 `yaohua0506.github.io/` 子目录，由 GitHub Actions 发布到 Pages。
+本站源码直接放在仓库根目录，GitHub Pages 发布 `main` 分支的根目录，不需要 GitHub Actions。
 
 ```
-yaohua0506.github.io/
+.
 ├── index.html     页面结构 + 全部文字内容
 ├── style.css      样式（含手机端适配、打印样式）
 ├── Resume.pdf     简历占位文件，请替换成你自己的（文件名保持不变）
 ├── .nojekyll      告诉 GitHub Pages 不要用 Jekyll 处理
 └── README.md      本文件
-
-.github/workflows/pages.yml   发布工作流（把 yaohua0506.github.io/ 上传为站点）
 ```
 
 ## 本地预览
@@ -108,9 +106,8 @@ img.avatar { border-radius: 50%; }
 ## 部署方式
 
 - 仓库名必须是 `用户名.github.io`，且为 **Public**
-- Settings → Pages → **Source 必须选 `GitHub Actions`**（不是 Deploy from a branch）
-- 工作流 `.github/workflows/pages.yml` 会把 `yaohua0506.github.io/` 整个上传为站点根目录
-- 每次 `git push` 到 `main` 自动重新部署，耗时约 30~60 秒
+- Settings → Pages → **Source 选 `Deploy from a branch`**，分支 `main`，目录 `/ (root)`
+- 每次 `git push` 到 `main`，Pages 会自动重新构建，约 1 分钟生效
 
 日常更新：
 
@@ -120,7 +117,7 @@ git commit -m "更新内容"
 git push
 ```
 
-注意：所有内容改动都要改 `yaohua0506.github.io/` 里的文件，仓库根目录已经没有网页源码了。
+注意：所有内容改动都直接改仓库根目录里的文件。
 
 ## 小技巧
 
