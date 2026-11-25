@@ -1,18 +1,8 @@
 <h1 align="center">
-个人简历
+胡君宇 Jerry Hu · 成长记录
 </h1>
 
-<div align="center">
-
-[![](https://img.shields.io/github/stars/yaohua0506/yaohua0506.github.io?style=flat)](https://github.com/yaohua0506/yaohua0506.github.io/stargazers)
-[![](https://img.shields.io/github/forks/yaohua0506/yaohua0506.github.io?style=flat)](https://github.com/yaohua0506/yaohua0506.github.io/network/members)
-[![](https://img.shields.io/github/issues/yaohua0506/yaohua0506.github.io)](https://github.com/yaohua0506/yaohua0506.github.io/issues)
-[![](https://img.shields.io/github/last-commit/yaohua0506/yaohua0506.github.io)](https://github.com/yaohua0506/yaohua0506.github.io/commits/main)
-[![](https://img.shields.io/badge/dependencies-0-brightgreen)](https://github.com/yaohua0506/yaohua0506.github.io)
-
-</div>
-
-<p align="center">纯静态、零依赖的个人简历页面 · 专业编辑风 + 蓝色强调</p>
+<p align="center">纯静态、零依赖的个人成长档案 · 专业编辑风 + 蓝色强调</p>
 
 <p align="center">
     <br>
@@ -22,36 +12,37 @@
 
 在线预览：<https://yaohua0506.github.io/>
 
-站点只有 `index.html` + `style.css` 两个文件，不加载任何 CDN、字体或前端框架，断网双击也能正常打开。
+这个站点只做一件事：把已经走过的路记下来，并给还没开始的阶段留好位置。
+页面只有 `index.html` + `style.css` 两个文件，不加载任何 CDN、字体或前端框架，断网双击也能正常打开。
+
+## 现在记录了什么
+
+| 时间 | 内容 | 状态 |
+|---|---|---|
+| 2011.10 | 出生 | 已发生 |
+| 2018.09 – 2024.07 | 北京市顺义区石园小学 | 已完成 |
+| 2024.09 – 2027.07 | 天津市武清区六力学校 | 在读 |
+| 2027.09 – 2030.07 | 高中 | 留白，待书写 |
+| 2030.09 – 2034.07 | 大学 | 留白，待书写 |
+| 2034.07 之后 | 下一段旅程 | 留白，待书写 |
+
+> 虚线框不是"没做完"，而是刻意留白：以后发生了，再回来补上。
 
 ## 主要特点
 
-- **零依赖零请求**: 图标是内联 SVG，字体用系统字体栈，没有任何外部资源请求，首屏无需等待网络。
-- **专业编辑风**: 白底 + 单一蓝色强调色，四档文字层级、分区编号、卡片化经历，长页面也有清晰的视觉落点。
-- **滚动交互**: 顶部阅读进度条、导航自动高亮当前区块、内容滚动淡入，并遵循 `prefers-reduced-motion` 自动降级。
-- **响应式**: 针对 375 / 768 / 1024 / 1440 四档调校；窄屏侧栏回落为顶部区块，表格自动堆叠成卡片。
-- **打印友好**: `Ctrl + P` 可直接存成 PDF，打印样式自动隐藏导航与头像、去掉阴影与彩色底。
-- **可访问性**: 语义化标签、`aria-label` 标注星级、`focus-visible` 键盘焦点环、跳转正文的 skip link，正文对比度达到 WCAG AA。
-
-## 快速开始
-
-1. 克隆本仓库（或直接 fork 后改名成 `USERNAME/USERNAME.github.io`）：
-
-    ```powershell
-    git clone https://github.com/yaohua0506/yaohua0506.github.io.git
-    ```
-
-1. 打开 `index.html`，按「[内容维护](#内容维护)」一节的对照表替换文字内容。
-1. 用你自己的 PDF 覆盖 `Resume.pdf`，**文件名保持 `Resume.pdf`**（大小写敏感），导航栏的 `CV` 与 Hero 里的「下载 CV」都会指向它。
-1. 换成真实头像，参考「[换成真实头像](#换成真实头像)」。
-1. `commit` 并 `push` 到 `main`，GitHub Pages 约 1 分钟后自动重新构建。
+- **零依赖零请求**：图标是内联 SVG，字体用系统字体栈，没有任何外部资源请求。
+- **成长时间线**：纵向时间轴区分「已完成 / 在读 / 待书写」三种状态，未来阶段用虚线占位。
+- **滚动交互**：顶部阅读进度条、导航自动高亮、内容滚动淡入，并遵循 `prefers-reduced-motion` 自动降级。
+- **响应式**：针对 375 / 768 / 1024 / 1440 四档调校；窄屏侧栏回落为顶部区块。
+- **打印友好**：点「打印 / 保存为 PDF」或按 `Ctrl + P`，会隐藏导航与按钮、把虚线占位降为灰色，可直接存档。
+- **可访问性**：语义化标签、`aria-label`、`focus-visible` 键盘焦点环、跳转到正文的 skip link。
 
 ## 页面结构
 
 **布局**：
 
-- **顶部导航**（吸顶，60px）：`概览 · 经历 · 技能 · 成果 · 荣誉 · 教育 · CV`，滚动时高亮当前区块并显示顶部进度条
-- **左侧栏**（宽 300px，`position: sticky; top: 60px`）：头像、姓名、职位、三行方向标签、三个图标链接（学校 / 邮箱 / GitHub）
+- **顶部导航**（吸顶，60px）：`概览 · 时间线 · 教育 · 兴趣 · 荣誉 · 寄语`，滚动时高亮当前区块
+- **左侧栏**（宽 300px，`position: sticky; top: 60px`）：头像、中英文姓名、一句定位、三条身份信息、「现在」信息块
 - **右侧栏**：内容区，随页面滚动
 - 屏幕宽度小于 900px 时，侧栏回落成顶部区块，导航变成可横向滑动的一行
 
@@ -59,14 +50,13 @@
 
 | 顺序 | 分区 | 锚点 | 格式说明 |
 |---|---|---|---|
-| 1 | 概览 Overview | `#about` | Hero 封面 `.hero`（姓名/职位/关键数字/CTA）+ 自我评价引文 `.quote` + 核心优势勾选列表 `.checks` |
-| 2 | 工作经历 Experience | `#experience` | `.exp` 卡片（公司/职位/时间地点）+ 职责表 `.table` + 架构图 `.flow` + 关键成果表 |
-| 3 | 技术能力 Skills | `#skills` | 分段进度条 `.meter`（`data-v` 控制亮几格）+ 工具链标签 `.tags` |
-| 4 | 专利与论文 Publications | `#publications` | 专利表（名称/时间/状态/相关性）+ 论文 `.pub-list` |
-| 5 | 获奖与荣誉 Honors | `#honors` | `[A1]` 编号 + 奖项 + 日期 + 角色/颁奖方 |
-| 6 | 教育背景 Education | `#education` | 时间 + 学校 + 专业 + 学位 |
+| 1 | 概览 Overview | `#about` | Hero 封面（姓名 / 简介 / 关键数字 / 打印按钮）+ 自我介绍引文 `.quote` + 勾选列表 `.checks` |
+| 2 | 成长时间线 Timeline | `#timeline` | `.timeline` 纵向轴，每段一个 `.tl-item`，状态类 `is-done` / `is-now` / `is-pending` |
+| 3 | 教育经历 Education | `#education` | `.exp` 卡片（学校 / 学段 / 时间 / 地点）+ 要点列表；未来学段用 `exp is-blank` |
+| 4 | 兴趣与特长 Interests | `#interests` | 标签墙 `.tags`（`.is-blank` 表示待填）+ 待书写说明块 `.pending` |
+| 5 | 荣誉与作品 Honors | `#honors` | `.awards` 列表，`[H1]` 编号 + 日期 + 说明 |
+| 6 | 写给未来 Message | `#letter` | 引文 `.quote` + 照片墙占位 `.gallery` |
 
-> 表格在 760px 以下自动堆叠成卡片（`th.t-key` 变成卡片标题，`td[data-label]` 显示字段名）。
 > 分区标题的 `01–06` 编号由 CSS 计数器自动生成，增删分区不用手改序号。
 
 ## 目录结构
@@ -75,69 +65,97 @@
 .
 ├── index.html     页面结构 + 全部文字内容 + 底部内联脚本
 ├── style.css      设计令牌 + 组件样式 + 响应式 + 打印样式
+├── images/
+│   ├── avatar.jpg   头像（480×480）
+│   ├── shiyuan.jpg  北京市顺义区石园小学校徽
+│   └── liuli.jpg    天津市武清区六力学校校徽
 ├── screenshot.png README 配图
-├── Resume.pdf     简历占位文件，请替换成你自己的（文件名保持不变）
 ├── .nojekyll      告诉 GitHub Pages 不要用 Jekyll 处理
 └── README.md      本文件
 ```
 
-## 视觉规范
-
-- **配色**：白底 + 单一强调色 `--accent: #2563eb`；文字分 `--text / --text-2 / --text-3 / --text-4` 四档，全部定义在 `style.css` 顶部的 `:root`
-- **字体**：系统字体栈（零外部请求）；数字与技术名词使用 `--mono` 等宽栈
-- **间距**：分区之间 `48px`，卡片内边距 `24–26px`，圆角 `10 / 14px`
-- **动效**：过渡统一 `180–200ms`；滚动淡入由页面底部内联脚本控制，`prefers-reduced-motion: reduce` 时全部关闭
-- **打印**：`@media print` 会把强调色降为深灰、去掉阴影与彩色底，并保证表格分页时不被拆断
-
 ## 内容维护
 
-简历正文唯一来源是 `index.html`，改文字时直接改对应区块即可：
+正文唯一来源是 `index.html`，改文字时直接改对应区块即可：
 
 | 要改的内容 | 在 index.html 里找 |
 |---|---|
-| 姓名 / 英文名 | Hero 里的 `<h1 class="hero-name">`，以及侧栏 `<p class="side-name">`（两处保持一致） |
-| 左侧定位标签 | `<ul class="side-bio">` |
-| 联系方式 | `<ul class="social-icons">`（邮箱、学校、GitHub） |
-| 关键数字 | Hero 内的 `<ul class="hero-stats">` |
-| 求职意向 / 自我评价 | `#about` 下的 `.hero-sub` 与 `.quote` |
-| 一段工作经历 | `<article class="exp">`，整块复制/删除 |
-| 核心职责 / 关键成果 / 代表项目 / 专利 | `<table class="table table-stack">`，新增行照抄 `<tr>`，首列用 `<th scope="row" class="t-key">` |
-| 架构图节点 | `.flow` 内的 `.flow-node`、`.flow-bar` |
-| 技能熟练度 | `.meter` 的 `data-v="1~5"`，同时改 `aria-label` |
-| 工具链标签 | `.tags` 下的 `<li>` |
-| 获奖 / 学历 | `.awards li` / `.edu li` |
+| 姓名 / 英文名 | Hero 的 `<h1 class="hero-name">`、侧栏 `.side-name` 与 `.side-en`（三处保持一致） |
+| 左侧身份信息 | `<ul class="side-bio">` 与 `.side-note` |
+| 关键数字 | Hero 内的 `<ul class="hero-stats">`（记得同步「当前年龄」） |
+| 自我介绍 | `#about` 下的 `.hero-sub` 与 `.quote` |
+| 时间线某一段 | `.timeline` 里的 `<li class="tl-item">` |
+| 某所学校 | `<article class="exp">`，整块复制 / 修改 |
+| 学校校徽 | `images/shiyuan.jpg`、`images/liuli.jpg`（时间线与教育卡片共用同一张图） |
+| 头像 | `images/avatar.jpg`，详见「[换头像](#换头像)」 |
+| 兴趣标签 | `.tags` 下的 `<li>`，去掉 `is-blank` 即变成正式内容 |
+| 荣誉 / 作品 | `.awards` 里的 `<li class="is-blank">`，填好后删掉 `is-blank` |
+| 照片 | `.gallery` 里把 `.pending` 占位换成 `<img>` 即可 |
 | 更新时间 | 页脚 `.footer` |
 
-**改进度条时**记得同步 `aria-label="熟练度 N 分，满分 5 分"`，否则读屏与打印会不一致。
+### 补上「高中」这一段
 
-## 换成真实头像
+等到 2027 年，把时间线里的占位块换成正式条目：
 
-现在的头像是一个带渐变环和虚线圆的装饰性占位（`.avatar` 完全由 CSS 绘制）。换成真实照片：
+```html
+<li class="tl-item is-done">
+  <div class="tl-top">
+    <span class="tl-when">2027.09 — 2030.07</span>
+    <span class="tl-tag">已完成</span>
+  </div>
+  <h3 class="tl-title">某某中学<span class="en">Some High School</span></h3>
+  <p class="tl-sub">高中 · 三年<span class="en">High school · three years</span></p>
+  <p class="tl-desc">在这里写这三年的故事。<span class="en">The story of these three years.</span></p>
+</li>
+```
 
-1. 把照片放到 `images/avatar.jpg`。
-1. 把侧栏里的 `<div class="avatar" aria-hidden="true"></div>` 替换为：
+教育经历区同理：把 `article class="exp is-blank"` 的 `is-blank` 去掉，再补上 `<ul class="bullets">` 里的学段、状态和关键词。
 
-    ```html
-    <img src="images/avatar.jpg" alt="头像" class="avatar" />
-    ```
+## 换校徽
 
-1. 在 `style.css` 中补一句，让图片裁切填满（同时关掉装饰用的两道伪元素）：
+两所学校的校徽都放在 `images/` 下，时间线与教育经历卡片引用的是同一份文件：
 
-    ```css
-    img.avatar { object-fit: cover; object-position: top; border-radius: 50%; }
-    img.avatar::before, img.avatar::after { display: none; }
-    ```
+- `images/shiyuan.jpg` —— 石园小学校徽（横向）
+- `images/liuli.jpg` —— 六力学校校徽（方形 / 圆形）
 
-## 替换简历
+替换时保持文件名不变即可，两处会同时更新。图片会以 `object-fit: contain` 缩放：
 
-`Resume.pdf` 现在是 858 字节的占位文件。用你自己的 PDF 覆盖它，**文件名保持 `Resume.pdf`**（大小写敏感），
-顶部导航的 `CV` 和 Hero 里的「下载 CV」按钮就会指向新文件。
+- 教育经历卡片：64×64 白色圆角底块（窄屏 52×52）
+- 成长时间线：28×28 迷你徽标（窄屏 24×24）
+
+如果新校徽是透明背景的 PNG，直接覆盖同名文件后，再把 `index.html` 里对应 `<img>` 的 `src` 后缀改成 `.png` 即可。
+记得同步修改 `alt` 文本（如「北京市顺义区石园小学校徽」），方便读屏软件识别。
+
+## 换头像
+
+侧栏头像已经是真实图片（`images/avatar.jpg`，480×480 方形裁切，约 47 KB），显示为 148px 圆形，窄屏 112px。
+
+替换时保持文件名不变即可，`index.html` 里对应的是：
+
+```html
+<img class="avatar" src="images/avatar.jpg" alt="哪吒毛绒玩偶头像" width="148" height="148" />
+```
+
+- 建议用**正方形**图片，或者主体位于画面中上部的竖图
+- 圆形的焦点由 `style.css` 里的 `img.avatar { object-position: center 30%; }` 控制，换成其他照片时可以调成 `center`、`top` 等
+- 建议先裁成 480×480 左右再上传，避免几 MB 的原图拖慢首屏
+- 记得同步修改 `alt` 文本，说明头像内容
+
+## 导出 PDF
+
+顶部 Hero 里的「打印 / 保存为 PDF」按钮会调用 `window.print()`。在打印对话框里：
+
+1. 目标选「另存为 PDF」；
+2. 勾选「背景图形」可以保留淡淡的虚线底纹（不勾也完全可读）；
+3. A4 纵向，页边距「默认」，即可得到分页正常的存档版。
+
+`@media print` 会自动隐藏导航、侧栏头像和按钮，并把彩色强调降为深灰，方便黑白打印。
 
 ## 本地调试
 
 1. 直接双击 `index.html`，改完存盘刷新即可，不需要构建步骤。
 1. 想模拟手机效果，浏览器开发者工具里切到 375px / 768px 宽度查看。
-1. 想检查打印效果，`Ctrl + P` 打开打印预览，A4 纸张下确认分页是否合适。
+1. 想检查打印效果，`Ctrl + P` 打开打印预览，确认时间线没有被拆断。
 
 ## 部署方式
 
@@ -149,12 +167,11 @@
 
 ```powershell
 git add -A
-git commit -m "更新内容"
+git commit -m "补充 2027 年高中阶段"
 git push
 ```
 
 ## 已知占位
 
-- 侧栏姓名与 Hero 标题当前显示为 `hhh`，替换成真实姓名后记得同步 `<title>` 与 `<meta name="description">`
-- `Resume.pdf` 仍是占位文件
-- 头像是 CSS 绘制的装饰圆，等真实照片就位后按上一节替换
+- 兴趣、荣誉、照片墙都是虚线占位，等内容确定后逐项替换
+- 「15 岁」按 2026.11 计算，每年生日后需要手动更新；不想维护可以改成出生年份

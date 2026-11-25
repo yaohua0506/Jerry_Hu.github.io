@@ -1,5 +1,5 @@
 /* ============================================================
-   个人简历 · 专业编辑风（蓝色强调）
+   成长记录 · 专业编辑风（蓝色强调）
    顶部导航吸顶 + 左侧固定信息栏 + 右侧内容滚动
    纯 CSS + 内联 SVG，无任何外部请求
    ------------------------------------------------------------
@@ -11,14 +11,13 @@
    05 Hero
    06 内容区 / 分区标题
    07 概览（导语 / 引文 / 勾选）
-   08 工作经历
-   09 表格
-   10 架构图
-   11 技能 / 标签
-   12 论文 / 荣誉 / 教育 / 页脚
-   13 动效 / 可访问性
-   14 响应式
-   15 打印
+   08 经历卡片
+   09 成长时间线 / 待书写占位
+   10 标签 / 相册
+   11 荣誉 / 教育 / 页脚
+   12 动效 / 可访问性
+   13 响应式
+   14 打印
    ============================================================ */
 
 /* ============================================================
@@ -231,12 +230,30 @@ em { font-style: normal; font-weight: 600; color: var(--text-2); }
   background: radial-gradient(circle at 50% 38%, rgba(37, 99, 235, .13), rgba(37, 99, 235, 0) 72%);
 }
 
+/* 真实头像：图片铺满圆形，焦点略微偏上 */
+img.avatar {
+  display: block;
+  object-fit: cover;
+  object-position: center 30%;
+}
+img.avatar::before,
+img.avatar::after { display: none; }
+
 .side-name {
   margin: 0 0 4px;
   font-size: 19px;
   font-weight: 700;
   letter-spacing: .01em;
   color: var(--text);
+}
+
+/* 英文姓名 */
+.side-en {
+  margin: 0 0 8px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: .08em;
+  color: var(--text-3);
 }
 
 .side-role {
@@ -285,53 +302,45 @@ em { font-style: normal; font-weight: 600; color: var(--text-2); }
   color: var(--text-4);
 }
 
-/* 图标链接：方形浅底按钮 */
-.social-icons {
-  margin: 0;
-  padding: 20px 0 0;
-  list-style: none;
-  display: grid;
-  gap: 8px;
-  font-size: 12.5px;
+/* 侧栏「现在」信息块 */
+.side-note {
+  padding: 12px 14px;
+  border: 1px dashed var(--border-2);
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, .62);
   text-align: left;
-  border-top: 1px solid var(--border);
 }
-
-.social-icons li {
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
+.side-note-label {
+  margin: 0 0 4px;
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--accent-strong);
+}
+.side-note-text {
+  margin: 0;
+  font-size: 12.5px;
+  font-weight: 600;
   line-height: 1.5;
+  color: var(--text);
 }
-
-.social-icons .ico {
-  flex: none;
-  width: 28px;
-  height: 28px;
-  padding: 7px;
-  border-radius: 8px;
-  background: #ffffff;
-  border: 1px solid var(--border);
-  fill: var(--text-3);
-  transition: background-color .18s var(--ease), border-color .18s var(--ease),
-              fill .18s var(--ease), transform .18s var(--ease);
+.side-note-when {
+  margin: 2px 0 0;
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--text-3);
+  font-variant-numeric: tabular-nums;
 }
-.social-icons li:hover .ico {
-  background: var(--accent);
-  border-color: var(--accent);
-  fill: #fff;
-  transform: translateY(-1px);
+.side-note-en {
+  margin: 8px 0 0;
+  padding-top: 8px;
+  border-top: 1px solid var(--border);
+  font-size: 10.5px;
+  line-height: 1.55;
+  color: var(--text-4);
 }
-
-.social-icons .li-body { min-width: 0; padding-top: 3px; }
-
-.social-icons a {
-  color: var(--text-2);
-  text-decoration: none;
-  word-break: break-word;
-  transition: color .18s var(--ease);
-}
-.social-icons a:hover { color: var(--accent-strong); text-decoration: underline; }
 
 /* ============================================================
    05 Hero
@@ -456,6 +465,7 @@ em { font-style: normal; font-weight: 600; color: var(--text-2); }
   padding: 0 18px;
   border-radius: 999px;
   border: 1px solid transparent;
+  font-family: inherit;
   font-size: 14px;
   font-weight: 600;
   text-decoration: none;
@@ -576,48 +586,8 @@ em { font-style: normal; font-weight: 600; color: var(--text-2); }
 }
 
 /* ============================================================
-   07 概览（导语 / 引文 / 勾选）
+   07 概览（引文 / 勾选）
    ============================================================ */
-.lead {
-  margin: 0 0 10px;
-  padding: 16px 18px;
-  border-left: 3px solid var(--accent);
-  border-radius: 0 12px 12px 0;
-  background: linear-gradient(90deg, var(--accent-soft), rgba(239, 246, 255, 0) 82%);
-}
-.lead p.lead-title {
-  margin: 0 0 8px;
-  font-size: 17px;
-  font-weight: 700;
-  line-height: 1.55;
-  color: var(--text);
-}
-.lead p {
-  margin: 0 0 10px;
-  font-size: 14.5px;
-  color: var(--text-2);
-  text-align: justify;
-}
-.lead p:last-child { margin-bottom: 0; }
-
-.lead-meta {
-  margin: 12px 0 0;
-  padding: 0;
-  list-style: none;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-}
-.lead-meta li {
-  padding: 2px 10px;
-  border: 1px solid var(--accent-line);
-  border-radius: 999px;
-  background: #fff;
-  font-size: 12px;
-  line-height: 1.7;
-  color: var(--accent-strong);
-}
-
 .quote {
   margin: 0;
   padding: 16px 18px;
@@ -663,7 +633,7 @@ em { font-style: normal; font-weight: 600; color: var(--text-2); }
 }
 
 /* ============================================================
-   08 工作经历
+   08 经历卡片
    ============================================================ */
 .exp {
   position: relative;
@@ -693,6 +663,25 @@ em { font-style: normal; font-weight: 600; color: var(--text-2); }
 }
 
 .exp-head { margin-bottom: 12px; }
+
+/* 带校徽的经历抬头：徽标列 + 文字列 */
+.exp-head.has-logo {
+  display: grid;
+  grid-template-columns: 64px minmax(0, 1fr);
+  gap: 14px;
+  align-items: start;
+}
+.exp-head-body { min-width: 0; }
+
+.school-logo {
+  width: 64px;
+  height: 64px;
+  padding: 5px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: #fff;
+  object-fit: contain;
+}
 
 .exp-org {
   margin: 0;
@@ -733,55 +722,11 @@ em { font-style: normal; font-weight: 600; color: var(--text-2); }
 }
 .exp-when .en { margin-top: 1px; font-family: inherit; font-size: 11px; color: var(--text-4); }
 
-.exp-project {
-  margin: 22px 0 10px;
-  font-size: 15.5px;
-  font-weight: 700;
-  line-height: 1.55;
-  color: var(--text);
-}
-.exp-project::before {
-  content: "";
-  display: inline-block;
-  width: 7px;
-  height: 7px;
-  margin-right: 9px;
-  border-radius: 2px;
-  background: var(--accent);
-  transform: translateY(-2px);
-}
-.exp-project .en { font-size: 12px; }
-
 .exp-desc {
   margin: 0 0 14px;
   font-size: 14.5px;
   color: var(--text-2);
   text-align: justify;
-}
-
-.exp-label {
-  margin: 16px 0 7px;
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: .1em;
-  text-transform: uppercase;
-  color: var(--text-3);
-}
-
-.exp-stack {
-  margin: 14px 0 0;
-  padding-top: 12px;
-  border-top: 1px dashed var(--border);
-  font-family: var(--mono);
-  font-size: 12px;
-  color: var(--text-3);
-  letter-spacing: .01em;
-}
-
-.section > p.exp-span {
-  margin: 14px 0 0;
-  font-size: 13px;
-  color: var(--text-3);
 }
 
 .bullets {
@@ -794,243 +739,171 @@ em { font-style: normal; font-weight: 600; color: var(--text-2); }
 }
 .bullets li::marker { color: var(--accent); }
 
-/* ============================================================
-   09 表格
+/* ============================================================\n   09 成长时间线 / 待书写占位
    ============================================================ */
-.table-wrap {
-  margin: 0 0 18px;
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  background: #fff;
-  overflow: auto;
-}
-
-.table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 14px;
-}
-
-.table caption {
-  caption-side: top;
-  padding: 9px 14px;
-  background: var(--bg-soft);
-  border-bottom: 1px solid var(--border);
-  text-align: left;
-  font-family: var(--mono);
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: .12em;
-  text-transform: uppercase;
-  color: var(--accent-strong);
-}
-
-.table th,
-.table td {
-  padding: 11px 14px;
-  text-align: left;
-  vertical-align: top;
-  border-bottom: 1px solid var(--border);
-  line-height: 1.65;
-}
-
-.table thead th {
-  background: var(--bg-tint);
-  border-bottom: 1px solid var(--border-2);
-  font-size: 11.5px;
-  font-weight: 600;
-  letter-spacing: .08em;
-  color: var(--text-3);
-  white-space: nowrap;
-}
-
-.table tbody th.t-key {
-  font-weight: 600;
-  color: var(--text);
-  border-left: 2px solid transparent;
-  transition: border-left-color .18s var(--ease);
-}
-
-.table tbody td { color: var(--text-2); }
-
-/* 两列键值表：左列按内容收紧，避免“技术领域”被挤成竖排 */
-.table-kv tbody th.t-key {
-  width: 1%;
-  white-space: nowrap;
-}
-
-/* 短字段不拆行 */
-.table tbody td[data-label="角色"] { white-space: nowrap; }
-
-.table tbody tr { transition: background-color .16s var(--ease); }
-.table tbody tr:hover { background: var(--bg-soft); }
-.table tbody tr:hover th.t-key { border-left-color: var(--accent); }
-
-.table tbody tr:last-child th,
-.table tbody tr:last-child td { border-bottom: 0; }
-
-.table-num th,
-.table-num td { font-variant-numeric: tabular-nums; }
-
-.t-good {
-  font-weight: 700;
-  color: var(--ok);
-  white-space: nowrap;
-}
-
-/* ============================================================
-   10 架构图
-   ============================================================ */
-.flow {
-  margin: 0 0 20px;
-  padding: 20px;
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  background: linear-gradient(180deg, #fbfdff 0%, #f4f8ff 100%);
-}
-
-.flow-row {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-}
-
-.flow-node {
-  flex: 1 1 120px;
-  max-width: 190px;
-  padding: 11px 10px;
-  border: 1px solid var(--accent-line);
-  border-radius: 10px;
-  background: #fff;
-  text-align: center;
-  transition: border-color .18s var(--ease), box-shadow .18s var(--ease),
-              transform .18s var(--ease);
-}
-.flow-node:hover {
-  border-color: var(--accent);
-  box-shadow: 0 8px 18px -14px rgba(37, 99, 235, .9);
-  transform: translateY(-1px);
-}
-.flow-node strong {
-  display: block;
-  font-size: 13.5px;
-  letter-spacing: .01em;
-  color: var(--text);
-}
-.flow-node span {
-  display: block;
-  margin-top: 1px;
-  font-size: 12px;
-  color: var(--text-3);
-}
-
-.flow-arrow {
-  flex: none;
-  color: var(--accent);
-  font-size: 15px;
-}
-
-.flow-down {
-  margin: 7px 0;
-  text-align: center;
-  color: var(--accent-line);
-  font-size: 16px;
-}
-
-.flow-bar {
-  padding: 12px 14px;
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  background: #fff;
-}
-.flow-bar h5 {
-  margin: 0 0 8px;
-  font-size: 13px;
-  font-weight: 700;
-  color: var(--text);
-}
-.flow-bar h5 span {
-  margin-left: 6px;
-  font-size: 10.5px;
-  font-weight: 400;
-  letter-spacing: .06em;
-  text-transform: uppercase;
-  color: var(--text-4);
-}
-.flow-items {
+.timeline {
+  position: relative;
   margin: 0;
-  padding: 0;
+  padding: 4px 0 0 28px;
   list-style: none;
+}
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 7px;
+  top: 8px;
+  bottom: 10px;
+  width: 2px;
+  border-radius: 2px;
+  background: linear-gradient(180deg, var(--accent) 0%, var(--accent-line) 44%, var(--border-2) 100%);
+}
+
+.tl-item {
+  position: relative;
+  padding: 0 0 22px;
+}
+.tl-item:last-child { padding-bottom: 0; }
+
+/* 节点圆点 */
+.tl-item::before {
+  content: "";
+  position: absolute;
+  left: -28px;
+  top: 5px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid var(--border-2);
+  background: #fff;
+  transition: border-color .18s var(--ease), box-shadow .18s var(--ease);
+}
+.tl-item.is-done::before { border-color: var(--accent); }
+.tl-item.is-now::before {
+  border-color: var(--accent);
+  background: var(--accent);
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, .16);
+}
+.tl-item.is-pending::before { border-style: dashed; }
+
+.tl-top {
   display: flex;
   flex-wrap: wrap;
-  gap: 5px;
-  font-size: 12px;
-  color: var(--text-2);
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 5px;
 }
-.flow-items li {
-  padding: 2px 8px;
-  border-radius: 6px;
+.tl-when {
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .01em;
+  color: var(--text-3);
+  font-variant-numeric: tabular-nums;
+}
+
+/* 时间线里的迷你校徽 */
+.tl-logo {
+  flex: none;
+  width: 28px;
+  height: 28px;
+  padding: 2px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: #fff;
+  object-fit: contain;
+}
+.tl-tag {
+  padding: 1px 8px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: #fff;
+  font-size: 11px;
+  line-height: 1.65;
+  color: var(--text-3);
+}
+.tl-item.is-done .tl-tag {
+  border-color: var(--accent-line);
   background: var(--accent-soft);
   color: var(--accent-strong);
 }
-.flow-items-code li { font-family: var(--mono); }
-
-/* ============================================================
-   11 技能 / 标签
-   ============================================================ */
-.skill-list {
-  margin: 0 0 8px;
-  padding: 0;
-  list-style: none;
-  display: grid;
+.tl-item.is-now .tl-tag {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: #fff;
 }
-.skill-list li {
-  display: grid;
-  grid-template-columns: 172px 88px minmax(0, 1fr);
-  gap: 14px;
-  align-items: center;
-  padding: 11px 0;
-  border-bottom: 1px dashed var(--border);
-  font-size: 14px;
-}
-.skill-list li:last-child { border-bottom: 0; }
 
-.skill-name {
-  font-size: 14.5px;
-  font-weight: 600;
+.tl-title {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.5;
   color: var(--text);
 }
-
-/* 分段进度条 */
-.meter {
-  display: inline-flex;
-  align-items: center;
-  gap: 3px;
-  width: 88px;
-  height: 6px;
+.tl-title .en { margin-top: 1px; font-size: 11.5px; }
+.tl-sub {
+  margin: 3px 0 0;
+  font-size: 13px;
+  color: var(--text-3);
 }
-.meter i {
-  flex: 1;
-  height: 6px;
-  border-radius: 99px;
-  background: var(--border);
-  transition: background-color .3s var(--ease);
-}
-.meter[data-v="1"] i:nth-child(1),
-.meter[data-v="2"] i:nth-child(-n + 2),
-.meter[data-v="3"] i:nth-child(-n + 3),
-.meter[data-v="4"] i:nth-child(-n + 4),
-.meter[data-v="5"] i:nth-child(-n + 5) { background: var(--accent); }
-
-.meter-sm { width: 62px; height: 5px; vertical-align: middle; }
-.meter-sm i { height: 5px; }
-
-.skill-desc {
-  font-size: 13.5px;
+.tl-sub .en { margin-top: 1px; font-size: 11px; color: var(--text-4); }
+.tl-desc {
+  margin: 6px 0 0;
+  font-size: 14px;
   color: var(--text-2);
 }
+.tl-desc .en { margin-top: 2px; font-size: 11.5px; }
 
+/* 待书写占位块（时间线、兴趣、照片墙共用） */
+.pending {
+  padding: 14px 16px;
+  border: 1px dashed var(--border-2);
+  border-radius: var(--radius);
+  background: repeating-linear-gradient(45deg, #fbfdff 0 10px, #f6f9ff 10px 20px);
+}
+.pending-title {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.5;
+  color: var(--text-2);
+}
+.pending-title .en { font-size: 11.5px; }
+.pending-note {
+  margin: 6px 0 0;
+  font-size: 13.5px;
+  line-height: 1.7;
+  color: var(--text-3);
+}
+.pending-note .en { margin-top: 2px; font-size: 11.5px; color: var(--text-4); }
+
+.pending-inline {
+  display: inline-block;
+  padding: 0 8px;
+  border: 1px dashed var(--border-2);
+  border-radius: 6px;
+  background: var(--bg-soft);
+  font-size: 12px;
+  color: var(--text-3);
+}
+
+/* 空白经历卡片（高中 / 大学） */
+.exp.is-blank {
+  border-style: dashed;
+  background: var(--bg-soft);
+  box-shadow: none;
+}
+.exp.is-blank::before { background: var(--border-2); }
+.exp.is-blank:hover {
+  border-color: var(--accent-line);
+  box-shadow: none;
+  transform: none;
+}
+.exp.is-blank .exp-org { color: var(--text-2); }
+.exp.is-blank .exp-desc { margin-bottom: 0; }
+
+
+/* ============================================================\n   10 标签 / 相册
+   ============================================================ */
 .tag-group { margin-bottom: 14px; }
 .tag-group:last-child { margin-bottom: 0; }
 
@@ -1042,6 +915,7 @@ em { font-style: normal; font-weight: 600; color: var(--text-2); }
   text-transform: uppercase;
   color: var(--text-3);
 }
+.tag-label .en { margin-top: 1px; font-size: 10.5px; color: var(--text-4); }
 
 .tags {
   margin: 0;
@@ -1067,36 +941,33 @@ em { font-style: normal; font-weight: 600; color: var(--text-2); }
   border-color: var(--accent-line);
   color: var(--accent-strong);
 }
-
-/* ============================================================
-   12 论文 / 荣誉 / 教育 / 页脚
-   ============================================================ */
-.pub-list {
-  margin: 0;
-  padding-left: 20px;
-  display: grid;
-  gap: 12px;
-  font-size: 14.5px;
-  color: var(--text-2);
-}
-.pub-list li::marker {
-  color: var(--accent);
-  font-family: var(--mono);
-  font-weight: 700;
-}
-.pub-list-title {
-  display: block;
-  font-weight: 600;
-  line-height: 1.55;
-  color: var(--text);
-}
-.pub-list-meta {
-  display: block;
-  margin-top: 2px;
-  font-size: 12.5px;
+.tags li.is-blank {
+  border-style: dashed;
+  background: transparent;
   color: var(--text-3);
 }
 
+/* 照片墙占位 */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 10px;
+}
+.gallery-item {
+  display: grid;
+  place-content: center;
+  gap: 2px;
+  aspect-ratio: 4 / 3;
+  padding: 10px;
+  text-align: center;
+  font-size: 12.5px;
+  color: var(--text-3);
+}
+.gallery-item .en { font-size: 10.5px; color: var(--text-4); }
+
+/* ============================================================\n   11 荣誉 / 教育 / 页脚
+   ============================================================ */
 .awards {
   margin: 0;
   padding: 0;
@@ -1130,6 +1001,21 @@ em { font-style: normal; font-weight: 600; color: var(--text-2); }
   box-shadow: var(--shadow-sm);
 }
 .awards li:hover::before { background: var(--accent); }
+
+.awards li.is-blank {
+  border-style: dashed;
+  background: var(--bg-soft);
+}
+.awards li.is-blank::before { background: var(--border-2); }
+.awards li.is-blank:hover { box-shadow: none; }
+.awards li.is-blank strong { color: var(--text-2); font-weight: 600; }
+.awards li.is-blank strong:first-of-type {
+  border-style: dashed;
+  border-color: var(--border-2);
+  background: transparent;
+  color: var(--text-3);
+}
+.awards li.is-blank .award-date { background: transparent; border: 1px dashed var(--border-2); }
 
 .awards strong { color: var(--text); }
 .awards strong:first-of-type {
@@ -1166,27 +1052,6 @@ em { font-style: normal; font-weight: 600; color: var(--text-2); }
 
 .awards .en { margin-top: 2px; font-size: 11.5px; color: var(--text-4); }
 
-.edu {
-  margin: 0;
-  padding-left: 20px;
-  display: grid;
-  gap: 10px;
-  font-size: 14.5px;
-  color: var(--text-2);
-}
-.edu li::marker { color: var(--accent); }
-.edu em {
-  display: inline-block;
-  margin-right: 6px;
-  padding: 1px 9px;
-  border-radius: 999px;
-  background: var(--bg-tint);
-  font-family: var(--mono);
-  font-size: 11.5px;
-  font-weight: 400;
-  color: var(--text-3);
-}
-
 .footer {
   margin-top: 48px;
   padding-top: 18px;
@@ -1200,8 +1065,7 @@ em { font-style: normal; font-weight: 600; color: var(--text-2); }
   color: var(--text-4);
 }
 
-/* ============================================================
-   13 动效 / 可访问性
+/* ============================================================\n   12 动效 / 可访问性
    ============================================================ */
 .js .reveal {
   opacity: 0;
@@ -1243,8 +1107,7 @@ em { font-style: normal; font-weight: 600; color: var(--text-2); }
   }
 }
 
-/* ============================================================
-   14 响应式
+/* ============================================================\n   13 响应式
    ============================================================ */
 @media (max-width: 1140px) {
   :root { --side-w: 276px; }
@@ -1288,10 +1151,9 @@ em { font-style: normal; font-weight: 600; color: var(--text-2); }
     max-width: 420px;
     margin: 0 auto 18px;
   }
-  .social-icons {
-    max-width: 360px;
+  .side-note {
+    max-width: 420px;
     margin: 0 auto;
-    padding-top: 16px;
   }
 
   .content { padding: 28px 22px 52px; max-width: none; }
@@ -1305,73 +1167,15 @@ em { font-style: normal; font-weight: 600; color: var(--text-2); }
 }
 
 @media (max-width: 760px) {
-  /* 表格堆叠成卡片 */
-  .table-stack thead {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    overflow: hidden;
-    clip: rect(0 0 0 0);
-    white-space: nowrap;
-  }
-  .table-stack,
-  .table-stack tbody,
-  .table-stack tr,
-  .table-stack th,
-  .table-stack td {
-    display: block;
-    width: auto;
-  }
-  .table-stack tbody tr {
-    margin: 0;
-    padding: 12px 14px;
-    border-bottom: 1px solid var(--border);
-  }
-  .table-stack tbody tr:last-child { border-bottom: 0; }
-  .table-stack tbody tr:hover { background: var(--bg-soft); }
-  .table-stack tbody th.t-key {
-    margin: 0 0 5px;
-    padding: 0;
-    border: 0;
-    font-weight: 700;
-    font-size: 14.5px;
-  }
-  .table-stack td {
-    padding: 2px 0;
-    border: 0;
-    font-size: 13.5px;
-    white-space: normal;
-  }
-  .table-kv tbody th.t-key { width: auto; white-space: normal; }
-  .table-stack td[data-label]::before {
-    content: attr(data-label) "：";
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--text-4);
-  }
-  .table-stack caption,
-  .table caption {
-    display: block;
-    width: auto;
-    border-radius: var(--radius) var(--radius) 0 0;
-  }
+  .timeline { padding-left: 24px; }
+  .tl-item::before { left: -24px; width: 14px; height: 14px; }
+  .timeline::before { left: 6px; }
 }
 
 @media (max-width: 640px) {
   .hero-stats { grid-template-columns: 1fr; }
   .hero-stats li { display: flex; align-items: baseline; gap: 8px; padding: 10px 12px; }
   .hero-stats strong { font-size: 19px; }
-
-  .skill-list li {
-    grid-template-columns: minmax(0, 1fr) auto;
-    row-gap: 6px;
-    align-items: center;
-  }
-  .skill-desc { grid-column: 1 / -1; }
-
-  .flow-row { flex-direction: column; }
-  .flow-node { width: 100%; max-width: none; }
-  .flow-arrow { transform: rotate(90deg); }
 
   .awards li { padding: 12px 14px 12px 16px; }
 }
@@ -1384,10 +1188,15 @@ em { font-style: normal; font-weight: 600; color: var(--text-2); }
   .exp { padding: 18px 15px 20px; }
   .section h2 { font-size: 19px; gap: 8px; }
   .h2-en { font-size: 11px; }
+
+  .gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+  .exp-head.has-logo { grid-template-columns: 52px minmax(0, 1fr); gap: 12px; }
+  .school-logo { width: 52px; height: 52px; border-radius: 12px; }
+  .tl-logo { width: 24px; height: 24px; }
 }
 
-/* ============================================================
-   15 打印（Ctrl+P 存成 PDF 当简历）
+/* ============================================================\n   14 打印（Ctrl+P 存成 PDF 当简历）
    ============================================================ */
 @media print {
   :root {
@@ -1427,9 +1236,10 @@ em { font-style: normal; font-weight: 600; color: var(--text-2); }
     border-bottom: 1px solid #ccc;
     background: none;
   }
-  .avatar, .side-role .en, .social-icons .ico { display: none; }
+  .avatar, .side-role .en { display: none; }
   .side-bio { margin-bottom: 8px; }
   .side-bio .en { color: #333; }
+  .side-note { max-width: none; margin: 8px 0 0; padding: 8px 10px; }
 
   .content { padding: 0; max-width: none; }
   .js .reveal { opacity: 1 !important; transform: none !important; }
@@ -1464,8 +1274,6 @@ em { font-style: normal; font-weight: 600; color: var(--text-2); }
   .sub-h { margin: 10px 0 6px; font-size: 11pt; page-break-after: avoid; }
   .sub-h::before { background: #666; }
 
-  .lead { padding: 0 0 0 10px; background: none; border-left: 2px solid #999; }
-  .lead-meta li { border-color: #999; background: none; }
   .quote { padding: 0 0 0 10px; border-left: 2px solid #999; background: none; }
   .checks li::before { border: 0; background: none; color: #000; }
 
@@ -1480,31 +1288,44 @@ em { font-style: normal; font-weight: 600; color: var(--text-2); }
   .exp::before { display: none; }
   .exp-role { padding: 0; border: 0; background: none; }
   .exp-role .en { color: #333; }
-  .exp-stack { border-top: 0; padding-top: 4px; }
+  .exp.is-blank { border-bottom: 1px dashed #999; background: none; }
 
-  .table-wrap { margin-bottom: 10px; border: 0; border-radius: 0; overflow: visible; }
-  .table thead th { background: #eee !important; color: #000; border-bottom: 1px solid #999; }
-  .table th, .table td { padding: 5px 8px; color: #000; }
-  .table tbody tr:hover { background: none; }
-  .table caption { padding: 4px 0; background: none; color: #333; }
-  .t-good { color: #000; }
+  .exp-head.has-logo { grid-template-columns: 46px minmax(0, 1fr); gap: 10px; }
+  .school-logo { width: 46px; height: 46px; padding: 3px; border-color: #999; }
+  .tl-logo { width: 20px; height: 20px; padding: 1px; border-color: #999; }
 
-  .flow { padding: 10px; border: 1px solid #999; background: none; }
-  .flow-node, .flow-bar { background: none; }
-  .flow-items li { background: none; padding: 0 8px 0 0; }
+  .timeline { padding-left: 22px; }
+  .timeline::before { left: 5px; background: #999; }
+  .tl-item { padding-bottom: 12px; page-break-inside: avoid; }
+  .tl-item::before {
+    left: -22px;
+    width: 12px;
+    height: 12px;
+    border-color: #666;
+    box-shadow: none;
+  }
+  .tl-tag { border-color: #999 !important; background: none !important; color: #333 !important; }
+  .tl-item.is-now::before { background: #666; }
 
-  .meter { width: auto; }
-  .meter i { display: none; }
-  .meter::after { content: attr(data-v) "/5"; font-size: 9pt; color: #333; }
+  .pending {
+    padding: 8px 10px;
+    border-color: #999;
+    background: none;
+  }
+  .pending-inline { border-color: #999; background: none; }
 
   .tags li { border-color: #999; background: none; }
+  .tags li.is-blank { border-style: dashed; color: #666; }
+  .gallery { gap: 8px; }
+  .gallery-item { border-color: #999; background: none; aspect-ratio: auto; padding: 18px 10px; }
+
   .awards li { padding: 0 0 6px; border: 0; border-radius: 0; }
   .awards li::before { display: none; }
-  .award-date { background: none; padding: 0; }
-  .edu em { background: none; padding: 0; }
+  .awards li.is-blank { border-bottom: 1px dashed #999; background: none; }
+  .award-date { background: none; padding: 0; border: 0; }
+  .awards li.is-blank .award-date { border: 0; }
 
   .footer { margin-top: 14px; }
 
-  .exp, .table-wrap, .flow, .awards li, .pub-list li,
-  .skill-list li, .tag-group { page-break-inside: avoid; }
+  .exp, .awards li, .tag-group, .pending, .gallery-item { page-break-inside: avoid; }
 }
